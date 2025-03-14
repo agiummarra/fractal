@@ -6,7 +6,7 @@
 
 Un'applicazione web interattiva per generare e visualizzare diversi tipi di frattali matematici. Creata con Streamlit e Python.
 
-![App Screenshot](screenshot.png)
+![App Screenshot](screen.jpg)
 
 ## 🌟 Caratteristiche
 
