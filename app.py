@@ -7,6 +7,7 @@ import io
 st.set_page_config(
     page_title="Fractal",
     page_icon="🥦",
+    layout="wide"
     )
 
 def mandelbrot(h, w, max_iter, x_min, x_max, y_min, y_max):
@@ -201,7 +202,7 @@ def plot_fractal(fractal_type, params):
 def main():
     
     # Aggiungi l'immagine nella pagina principale
-    st.image("ferraris.png", use_container_width=True)
+    st.image("ferraris.png", use_container_width=False)
     
     st.header('🎨✨ :rainbow[Generatore di Frattali] ❄️🥦', divider='rainbow')
     
