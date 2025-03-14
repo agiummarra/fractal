@@ -4,6 +4,11 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import io
 
+st.set_page_config(
+    page_title="Fractal",
+    page_icon="🥦",
+    )
+
 def mandelbrot(h, w, max_iter, x_min, x_max, y_min, y_max):
     x, y = np.meshgrid(np.linspace(x_min, x_max, w), np.linspace(y_min, y_max, h))
     c = x + y * 1j
@@ -194,30 +199,39 @@ def plot_fractal(fractal_type, params):
     return img
 
 def main():
-    st.title("Generatore di Frattali")
     
-    st.markdown("""
-    ## Cos'è un frattale?
+    # Aggiungi l'immagine nella pagina principale
+    st.image("ferraris.png", use_container_width=True)
     
+    st.header('🎨✨ :rainbow[Generatore di Frattali] ❄️🥦', divider='rainbow')
+    
+    st.markdown("## 🤔 Cos'è un :red[frattale]?")
+    
+    st.info("""
     Un frattale è una figura geometrica caratterizzata da un motivo che si ripete all'infinito a scale diverse, 
     mostrando autosimilarità. I frattali sono utilizzati per modellare strutture complesse in natura come nuvole, 
     montagne, coste e foglie.
-    """)
+    """, icon="ℹ️")
+    
+    st.divider()
+    
+    # Aggiungi l'immagine nella sidebar
+    st.sidebar.image("ferraris.png", use_container_width=True)
     
     # Sidebar per la selezione del tipo di frattale
     fractal_type = st.sidebar.selectbox(
-        "Seleziona il tipo di frattale",
+        "🔄 Seleziona il tipo di frattale 👇",
         ["Mandelbrot", "Julia", "Sierpinski Carpet", "Koch Snowflake", "Barnsley Fern"]
     )
     
-    # Parametri comuni
-    st.sidebar.header("Parametri")
     
+    # Parametri comuni
+    st.sidebar.markdown("📻 :rainbow[Parametri]", unsafe_allow_html=True)
     params = {}
     
     if fractal_type == "Mandelbrot":
         st.markdown("""
-        ### Insieme di Mandelbrot
+        ### 🌀 Insieme di Mandelbrot
         
         L'insieme di Mandelbrot è definito come l'insieme dei numeri complessi $c$ per cui la successione 
         $z_{n+1} = z_n^2 + c$ con $z_0 = 0$ rimane limitata.
@@ -225,17 +239,17 @@ def main():
         Formula: $z_{n+1} = z_n^2 + c$
         """)
         
-        params["size"] = st.sidebar.slider("Dimensione", 100, 1000, 500)
-        params["iterations"] = st.sidebar.slider("Iterazioni", 10, 1000, 100)
-        params["x_min"] = st.sidebar.slider("X min", -2.5, 0.0, -2.0)
-        params["x_max"] = st.sidebar.slider("X max", 0.0, 2.5, 1.0)
-        params["y_min"] = st.sidebar.slider("Y min", -1.5, 0.0, -1.5)
-        params["y_max"] = st.sidebar.slider("Y max", 0.0, 1.5, 1.5)
-        params["colormap"] = st.sidebar.selectbox("Mappa colori", ['viridis', 'plasma', 'inferno', 'magma', 'hot', 'cool', 'rainbow'])
+        params["size"] = st.sidebar.slider("📏 Dimensione", 100, 1000, 500)
+        params["iterations"] = st.sidebar.slider("🔁 Iterazioni", 10, 1000, 100)
+        params["x_min"] = st.sidebar.slider("⬅️ X min", -2.5, 0.0, -2.0)
+        params["x_max"] = st.sidebar.slider("➡️ X max", 0.0, 2.5, 1.0)
+        params["y_min"] = st.sidebar.slider("⬇️ Y min", -1.5, 0.0, -1.5)
+        params["y_max"] = st.sidebar.slider("⬆️ Y max", 0.0, 1.5, 1.5)
+        params["colormap"] = st.sidebar.selectbox("🎨 Mappa colori", ['viridis', 'plasma', 'inferno', 'magma', 'hot', 'cool', 'rainbow'])
         
     elif fractal_type == "Julia":
         st.markdown("""
-        ### Insieme di Julia
+        ### 🌊 Insieme di Julia
         
         L'insieme di Julia è definito come l'insieme dei numeri complessi $z$ per cui la successione 
         $z_{n+1} = z_n^2 + c$ (con $c$ costante) rimane limitata.
@@ -243,41 +257,41 @@ def main():
         Formula: $z_{n+1} = z_n^2 + c$
         """)
         
-        params["size"] = st.sidebar.slider("Dimensione", 100, 1000, 500)
-        params["iterations"] = st.sidebar.slider("Iterazioni", 10, 1000, 100)
-        params["x_min"] = st.sidebar.slider("X min", -2.0, 0.0, -2.0)
-        params["x_max"] = st.sidebar.slider("X max", 0.0, 2.0, 2.0)
-        params["y_min"] = st.sidebar.slider("Y min", -2.0, 0.0, -2.0)
-        params["y_max"] = st.sidebar.slider("Y max", 0.0, 2.0, 2.0)
-        params["c_real"] = st.sidebar.slider("Parte reale di c", -1.0, 1.0, -0.7)
-        params["c_imag"] = st.sidebar.slider("Parte immaginaria di c", -1.0, 1.0, 0.27)
-        params["colormap"] = st.sidebar.selectbox("Mappa colori", ['viridis', 'plasma', 'inferno', 'magma', 'hot', 'cool', 'rainbow'])
+        params["size"] = st.sidebar.slider("📏 Dimensione", 100, 1000, 500)
+        params["iterations"] = st.sidebar.slider("🔁 Iterazioni", 10, 1000, 100)
+        params["x_min"] = st.sidebar.slider("⬅️ X min", -2.0, 0.0, -2.0)
+        params["x_max"] = st.sidebar.slider("➡️ X max", 0.0, 2.0, 2.0)
+        params["y_min"] = st.sidebar.slider("⬇️ Y min", -2.0, 0.0, -2.0)
+        params["y_max"] = st.sidebar.slider("⬆️ Y max", 0.0, 2.0, 2.0)
+        params["c_real"] = st.sidebar.slider("💫 Parte reale di c", -1.0, 1.0, -0.7)
+        params["c_imag"] = st.sidebar.slider("✨ Parte immaginaria di c", -1.0, 1.0, 0.27)
+        params["colormap"] = st.sidebar.selectbox("🎨 Mappa colori", ['viridis', 'plasma', 'inferno', 'magma', 'hot', 'cool', 'rainbow'])
         
     elif fractal_type == "Sierpinski Carpet":
         st.markdown("""
-        ### Tappeto di Sierpinski
+        ### 🔲 Tappeto di Sierpinski
         
         Il tappeto di Sierpinski è un frattale che si ottiene dividendo un quadrato in 9 quadrati uguali 
         e rimuovendo quello centrale, poi ripetendo il processo per i quadrati rimanenti.
         """)
         
-        params["size"] = st.sidebar.slider("Dimensione", 100, 1000, 729)  # 3^6 = 729
-        params["iterations"] = st.sidebar.slider("Iterazioni", 1, 6, 4)
+        params["size"] = st.sidebar.slider("📏 Dimensione", 100, 1000, 729)
+        params["iterations"] = st.sidebar.slider("🔁 Iterazioni", 1, 6, 4)
         
     elif fractal_type == "Koch Snowflake":
         st.markdown("""
-        ### Fiocco di Koch
+        ### ❄️ Fiocco di Koch
         
         Il fiocco di Koch è un frattale che si ottiene partendo da un triangolo equilatero e sostituendo 
         ricorsivamente il terzo centrale di ogni lato con due segmenti che formano un angolo.
         """)
         
-        params["iterations"] = st.sidebar.slider("Iterazioni", 0, 6, 4)
-        params["size"] = st.sidebar.slider("Dimensione", 100, 1000, 600)
+        params["iterations"] = st.sidebar.slider("🔁 Iterazioni", 0, 6, 4)
+        params["size"] = st.sidebar.slider("📏 Dimensione", 100, 1000, 600)
         
     elif fractal_type == "Barnsley Fern":
         st.markdown("""
-        ### Felce di Barnsley
+        ### 🌿 Felce di Barnsley
         
         La felce di Barnsley è un frattale creato usando un sistema di funzioni iterate (IFS) 
         che simula la forma di una felce naturale.
@@ -289,13 +303,13 @@ def main():
         - f₄(x,y) = (-0.15x + 0.28y, 0.26x + 0.24y + 0.44) con probabilità 7%
         """)
         
-        params["iterations"] = st.sidebar.slider("Punti", 10000, 200000, 50000)
+        params["iterations"] = st.sidebar.slider("🔢 Punti", 10000, 200000, 50000)
     
     # Genera e mostra il frattale
-    if st.sidebar.button("Genera Frattale"):
-        with st.spinner("Generazione del frattale in corso..."):
+    if st.sidebar.button("🎯 Genera Frattale"):
+        with st.spinner("🔄 Generazione del frattale in corso..."):
             img = plot_fractal(fractal_type, params)
-            st.image(img, caption=f"Frattale: {fractal_type}", use_container_width=True)
+            st.image(img, caption=f"🖼️ Frattale: {fractal_type}", use_container_width=True)
 
 if __name__ == "__main__":
     main() 
