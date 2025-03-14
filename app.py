@@ -224,20 +224,25 @@ def main():
         ["Mandelbrot", "Julia", "Sierpinski Carpet", "Koch Snowflake", "Barnsley Fern"]
     )
     
-    
+    st.sidebar.divider()
     # Parametri comuni
     st.sidebar.markdown("📻 :rainbow[Parametri]", unsafe_allow_html=True)
     params = {}
     
+    
     if fractal_type == "Mandelbrot":
-        st.markdown("""
-        ### 🌀 Insieme di Mandelbrot
+        st.markdown("### 🌀 Insieme di Mandelbrot")
         
+        st.write("""
         L'insieme di Mandelbrot è definito come l'insieme dei numeri complessi $c$ per cui la successione 
-        $z_{n+1} = z_n^2 + c$ con $z_0 = 0$ rimane limitata.
-        
-        Formula: $z_{n+1} = z_n^2 + c$
         """)
+        st.latex(r"z_{n+1} = z_n^2 + c \quad \text{con} \quad z_0 = 0")
+        st.write("""
+        rimane limitata.
+        """)
+        
+        st.write("Formula:")
+        st.latex(r"z_{n+1} = z_n^2 + c")
         
         params["size"] = st.sidebar.slider("📏 Dimensione", 100, 1000, 500)
         params["iterations"] = st.sidebar.slider("🔁 Iterazioni", 10, 1000, 100)
@@ -248,14 +253,19 @@ def main():
         params["colormap"] = st.sidebar.selectbox("🎨 Mappa colori", ['viridis', 'plasma', 'inferno', 'magma', 'hot', 'cool', 'rainbow'])
         
     elif fractal_type == "Julia":
-        st.markdown("""
-        ### 🌊 Insieme di Julia
+        st.markdown("### 🌊 Insieme di Julia")
         
+        st.write("""
         L'insieme di Julia è definito come l'insieme dei numeri complessi $z$ per cui la successione 
-        $z_{n+1} = z_n^2 + c$ (con $c$ costante) rimane limitata.
-        
-        Formula: $z_{n+1} = z_n^2 + c$
         """)
+        st.latex(r"z_{n+1} = z_n^2 + c \quad \text{(con } c \text{ costante)}")
+        st.write("""
+        rimane limitata.
+        
+        """)
+        
+        st.write("Formula:")
+        st.latex(r"z_{n+1} = z_n^2 + c")
         
         params["size"] = st.sidebar.slider("📏 Dimensione", 100, 1000, 500)
         params["iterations"] = st.sidebar.slider("🔁 Iterazioni", 10, 1000, 100)
@@ -268,9 +278,9 @@ def main():
         params["colormap"] = st.sidebar.selectbox("🎨 Mappa colori", ['viridis', 'plasma', 'inferno', 'magma', 'hot', 'cool', 'rainbow'])
         
     elif fractal_type == "Sierpinski Carpet":
-        st.markdown("""
-        ### 🔲 Tappeto di Sierpinski
+        st.markdown("### 🔲 Tappeto di Sierpinski")
         
+        st.write("""
         Il tappeto di Sierpinski è un frattale che si ottiene dividendo un quadrato in 9 quadrati uguali 
         e rimuovendo quello centrale, poi ripetendo il processo per i quadrati rimanenti.
         """)
@@ -279,9 +289,9 @@ def main():
         params["iterations"] = st.sidebar.slider("🔁 Iterazioni", 1, 6, 4)
         
     elif fractal_type == "Koch Snowflake":
-        st.markdown("""
-        ### ❄️ Fiocco di Koch
+        st.markdown("### ❄️ Fiocco di Koch")
         
+        st.write("""
         Il fiocco di Koch è un frattale che si ottiene partendo da un triangolo equilatero e sostituendo 
         ricorsivamente il terzo centrale di ogni lato con due segmenti che formano un angolo.
         """)
@@ -290,18 +300,18 @@ def main():
         params["size"] = st.sidebar.slider("📏 Dimensione", 100, 1000, 600)
         
     elif fractal_type == "Barnsley Fern":
-        st.markdown("""
-        ### 🌿 Felce di Barnsley
+        st.markdown("### 🌿 Felce di Barnsley")
         
+        st.write("""
         La felce di Barnsley è un frattale creato usando un sistema di funzioni iterate (IFS) 
         che simula la forma di una felce naturale.
-        
-        Formula: Quattro trasformazioni affini con probabilità diverse:
-        - f₁(x,y) = (0, 0.16y) con probabilità 1%
-        - f₂(x,y) = (0.85x + 0.04y, -0.04x + 0.85y + 1.6) con probabilità 85%
-        - f₃(x,y) = (0.2x - 0.26y, 0.23x + 0.22y + 1.6) con probabilità 7%
-        - f₄(x,y) = (-0.15x + 0.28y, 0.26x + 0.24y + 0.44) con probabilità 7%
         """)
+        
+        st.write("Formula: Quattro trasformazioni affini con probabilità diverse:")
+        st.latex(r"f_1(x,y) = (0, 0.16y) \quad \text{con probabilità 1\%}")
+        st.latex(r"f_2(x,y) = (0.85x + 0.04y, -0.04x + 0.85y + 1.6) \quad \text{con probabilità 85\%}")
+        st.latex(r"f_3(x,y) = (0.2x - 0.26y, 0.23x + 0.22y + 1.6) \quad \text{con probabilità 7\%}")
+        st.latex(r"f_4(x,y) = (-0.15x + 0.28y, 0.26x + 0.24y + 0.44) \quad \text{con probabilità 7\%}")
         
         params["iterations"] = st.sidebar.slider("🔢 Punti", 10000, 200000, 50000)
     
@@ -310,6 +320,6 @@ def main():
         with st.spinner("🔄 Generazione del frattale in corso..."):
             img = plot_fractal(fractal_type, params)
             st.image(img, caption=f"🖼️ Frattale: {fractal_type}", use_container_width=True)
-
+            st.balloons()
 if __name__ == "__main__":
     main() 
