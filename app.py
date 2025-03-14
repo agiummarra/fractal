@@ -244,13 +244,13 @@ def main():
         st.write("Formula:")
         st.latex(r"z_{n+1} = z_n^2 + c")
         
-        params["size"] = st.sidebar.slider("📏 Dimensione", 100, 1000, 500)
-        params["iterations"] = st.sidebar.slider("🔁 Iterazioni", 10, 1000, 100)
-        params["x_min"] = st.sidebar.slider("⬅️ X min", -2.5, 0.0, -2.0)
-        params["x_max"] = st.sidebar.slider("➡️ X max", 0.0, 2.5, 1.0)
-        params["y_min"] = st.sidebar.slider("⬇️ Y min", -1.5, 0.0, -1.5)
-        params["y_max"] = st.sidebar.slider("⬆️ Y max", 0.0, 1.5, 1.5)
-        params["colormap"] = st.sidebar.selectbox("🎨 Mappa colori", ['viridis', 'plasma', 'inferno', 'magma', 'hot', 'cool', 'rainbow'])
+        params["size"] = st.sidebar.slider("📏 :blue[Dimensione]", 100, 1000, 500)
+        params["iterations"] = st.sidebar.slider("🔁 :blue[Iterazioni]", 10, 1000, 100)
+        params["x_min"] = st.sidebar.slider("⬅️ :blue[X min]", -2.5, 0.0, -2.0)
+        params["x_max"] = st.sidebar.slider("➡️ :blue[X max]", 0.0, 2.5, 1.0)
+        params["y_min"] = st.sidebar.slider("⬇️ :blue[Y min]", -1.5, 0.0, -1.5)
+        params["y_max"] = st.sidebar.slider("⬆️ :blue[Y max]", 0.0, 1.5, 1.5)
+        params["colormap"] = st.sidebar.selectbox("🎨 :blue[Mappa colori]", ['viridis', 'plasma', 'inferno', 'magma', 'hot', 'cool', 'rainbow'])
         
     elif fractal_type == "Julia":
         st.markdown("### 🌊 Insieme di Julia")
@@ -267,15 +267,15 @@ def main():
         st.write("Formula:")
         st.latex(r"z_{n+1} = z_n^2 + c")
         
-        params["size"] = st.sidebar.slider("📏 Dimensione", 100, 1000, 500)
-        params["iterations"] = st.sidebar.slider("🔁 Iterazioni", 10, 1000, 100)
-        params["x_min"] = st.sidebar.slider("⬅️ X min", -2.0, 0.0, -2.0)
-        params["x_max"] = st.sidebar.slider("➡️ X max", 0.0, 2.0, 2.0)
-        params["y_min"] = st.sidebar.slider("⬇️ Y min", -2.0, 0.0, -2.0)
-        params["y_max"] = st.sidebar.slider("⬆️ Y max", 0.0, 2.0, 2.0)
-        params["c_real"] = st.sidebar.slider("💫 Parte reale di c", -1.0, 1.0, -0.7)
-        params["c_imag"] = st.sidebar.slider("✨ Parte immaginaria di c", -1.0, 1.0, 0.27)
-        params["colormap"] = st.sidebar.selectbox("🎨 Mappa colori", ['viridis', 'plasma', 'inferno', 'magma', 'hot', 'cool', 'rainbow'])
+        params["size"] = st.sidebar.slider("📏 :blue[Dimensione]", 100, 1000, 500)
+        params["iterations"] = st.sidebar.slider("🔁 :blue[Iterazioni]", 10, 1000, 100)
+        params["x_min"] = st.sidebar.slider("⬅️ :blue[X min]", -2.0, 0.0, -2.0)
+        params["x_max"] = st.sidebar.slider("➡️ :blue[X max]", 0.0, 2.0, 2.0)
+        params["y_min"] = st.sidebar.slider("⬇️ :blue[Y min]", -2.0, 0.0, -2.0)
+        params["y_max"] = st.sidebar.slider("⬆️ :blue[Y max]", 0.0, 2.0, 2.0)
+        params["c_real"] = st.sidebar.slider("💫 :blue[Parte reale di c]", -1.0, 1.0, -0.7)
+        params["c_imag"] = st.sidebar.slider("✨ :blue[Parte immaginaria di c]", -1.0, 1.0, 0.27)
+        params["colormap"] = st.sidebar.selectbox("🎨 :blue[Mappa colori]", ['viridis', 'plasma', 'inferno', 'magma', 'hot', 'cool', 'rainbow'])
         
     elif fractal_type == "Sierpinski Carpet":
         st.markdown("### 🔲 Tappeto di Sierpinski")
@@ -285,8 +285,8 @@ def main():
         e rimuovendo quello centrale, poi ripetendo il processo per i quadrati rimanenti.
         """)
         
-        params["size"] = st.sidebar.slider("📏 Dimensione", 100, 1000, 729)
-        params["iterations"] = st.sidebar.slider("🔁 Iterazioni", 1, 6, 4)
+        params["size"] = st.sidebar.slider("📏 :blue[Dimensione]", 100, 1000, 729)
+        params["iterations"] = st.sidebar.slider("🔁 :blue[Iterazioni]", 1, 6, 4)
         
     elif fractal_type == "Koch Snowflake":
         st.markdown("### ❄️ Fiocco di Koch")
@@ -296,8 +296,8 @@ def main():
         ricorsivamente il terzo centrale di ogni lato con due segmenti che formano un angolo.
         """)
         
-        params["iterations"] = st.sidebar.slider("🔁 Iterazioni", 0, 6, 4)
-        params["size"] = st.sidebar.slider("📏 Dimensione", 100, 1000, 600)
+        params["iterations"] = st.sidebar.slider("🔁 :blue[Iterazioni]", 0, 6, 4)
+        params["size"] = st.sidebar.slider("📏 :blue[Dimensione]", 100, 1000, 600)
         
     elif fractal_type == "Barnsley Fern":
         st.markdown("### 🌿 Felce di Barnsley")
@@ -313,7 +313,7 @@ def main():
         st.latex(r"f_3(x,y) = (0.2x - 0.26y, 0.23x + 0.22y + 1.6) \quad \text{con probabilità 7\%}")
         st.latex(r"f_4(x,y) = (-0.15x + 0.28y, 0.26x + 0.24y + 0.44) \quad \text{con probabilità 7\%}")
         
-        params["iterations"] = st.sidebar.slider("🔢 Punti", 10000, 200000, 50000)
+        params["iterations"] = st.sidebar.slider("🔢 :blue[Punti]", 10000, 200000, 50000)
     
     # Genera e mostra il frattale
     if st.sidebar.button("🎯 Genera Frattale"):
