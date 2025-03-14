@@ -107,9 +107,10 @@ I contributi sono sempre benvenuti! Per contribuire:
 
 Distribuito sotto licenza MIT. Vedi `LICENSE` per maggiori informazioni.
 
-## 👥 Autore
+## 👥 Autori
 
 - [Andrea Giummarra](https://github.com/agiummarra)
+- Cristina Bellina Terra
 
 ## 🙏 Ringraziamenti
 
